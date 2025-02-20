@@ -51,7 +51,22 @@ function App() {
 
   return (
     <div>
-      <h1>Pizza Menu App</h1>
+      <Header />
+      <Menu />
+      <Footer />
+    </div>
+  );
+}
+
+// components
+function Header() {
+  return <h1>Fast React Pizza Co.</h1>;
+}
+
+function Menu() {
+  return (
+    <div>
+      <h2>Our menu</h2>;
       <Pizza />
       <Pizza />
       <Pizza />
@@ -59,6 +74,19 @@ function App() {
   );
 }
 
+function Footer() {
+  const hour = new Date().getHours();
+  //console.log(hour);
+  const openHour = 12;
+  const closeHour = 22;
+  // if (hour >= openHour && hour <= closeHour) alert("Sorry we're currenlty close!"); else alert();
+  const isOpen = hour >= openHour && hour <= closeHour;
+  console.log(isOpen);
+  return (
+    <footer>{new Date().toLocaleTimeString()} . We're currently open</footer>
+  );
+  //return React.createElement("footer", null, "We are currently open");
+}
 // component
 // writing component as fxns
 // nesting component call one another
@@ -82,4 +110,4 @@ root.render(
 );
 
 // react v17
-React.render(<App />);
+//React.render(<App />);
