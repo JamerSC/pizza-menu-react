@@ -80,3 +80,25 @@ Settings > Diff Decorations > Set to None
 - In react it uses the converted css to JSX
 - <h1 className="container">Header 1</h1>
 - Applying external css file & importing to index.js
+- import "./index.css"; // importing css file
+
+# Passing & Receiving props
+
+- 2 steps to define props
+- 1st pass the props into the component
+- 2nd we receive the props pass into component
+
+# Props?
+
+- used to pass data from parent component to child components (down the component tree).
+- essential tool to configure and customize components (line function parameters).
+- with props, parent components control how child components look & work.
+- Props are like arguments can pass single values, functions, array objects.
+- PROPS ARE READ-ONLY
+
+# Data - Props & State
+
+- State are internal component data that can be updated by component logic
+- Props is a data coming from the outside, and can only be updated by the parent component.
+- Props are read-only they are immutable. React strict rule
+- If you need to mutate props, you actually need state.

@@ -77,11 +77,45 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our menu</h2>;
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      <Pizza
+        name="Pizza Funghi"
+        ingredients="Tomato, mozarella, mushrooms, and onion"
+        photoName="/pizzas/funghi.jpg"
+        price="10.00"
+      />
+      <Pizza
+        name="Pizza Spinaci"
+        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
+        photoName="/pizzas/spinaci.jpg"
+        price={12.0}
+      />
+      <Pizza
+        name="Focaccia"
+        ingredients="Bread with italian olive oil and rosemary"
+        photoName="/pizzas/focaccia.jpg"
+        price={6.0}
+      />
     </main>
+  );
+}
+
+// component
+// writing component as fxn, nesting component call one another, reuse component
+// passing props
+function Pizza(props) {
+  console.log(props);
+  return (
+    <div className="pizza">
+      <img src={props.photoName} alt={props.name} />
+      <div>
+        <h3>{props.name}</h3>
+        <p>{props.ingredients}</p>
+        <span>${props.price}</span>
+      </div>
+      {/* <img src="/pizzas/funghi.jpg" />
+      <h3>Pizza Funghi</h3>
+      <p>Tomato, mozarella, mushrooms, and onion</p> */}
+    </div>
   );
 }
 
@@ -99,19 +133,6 @@ function Footer() {
     </footer>
   );
   //return React.createElement("footer", null, "We are currently open");
-}
-// component
-// writing component as fxns
-// nesting component call one another
-// reuse component
-function Pizza() {
-  return (
-    <div>
-      <img src="/pizzas/funghi.jpg" />
-      <h3>Pizza Funghi</h3>
-      <p>Tomato, mozarella, mushrooms, and onion</p>
-    </div>
-  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
