@@ -52,3 +52,31 @@ Settings > Diff Decorations > Set to None
 # Created More Components
 
 - Nested Components
+
+# Separation Concerns
+
+- Before one technology per file
+- Traditional separate of concerns
+- One technology per file Ex. Html, CSS, & JS File
+- One component per file React ex. Question, Menu, Filters, & Player (New paradigm)
+
+- Component with Data, Logic, & Apperance
+- Rise of interactive SPAs -> JS is in charge of HTML -> Logic & UI are coupled -> why keep them separated? -> Reach components + JSX
+
+# Styling React Applications
+
+- React is more of a library than a framework
+- We can choose different options to style our components or applications.
+- Ex. Inline, External, SASS, CSS module, Tailwind CSS using to style components
+
+# Writing inline javascript
+
+- By default inline styling: <h1 style="color=red;"><h1>
+- In React need to use a JavasScript Mode
+- Ex. <h1 style={{ color: "red" }}>Fast React Pizza Co.</h1>;
+- In React CSS property is converted into JSX
+- const style = { color: "red", fontSize: "48px", textTransform: "uppercase" };
+- In css we use <h1 class="container">Header 1</h1>
+- In react it uses the converted css to JSX
+- <h1 className="container">Header 1</h1>
+- Applying external css file & importing to index.js
