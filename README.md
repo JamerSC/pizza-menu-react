@@ -107,8 +107,10 @@ Settings > Diff Decorations > Set to None
 
 - JSX is a syntax extension for JavaScript that lets you write HTML-like markup inside a JavaScript file.
 
-# Rendering List using MAP Method
+# Rendering List using MAP Method ()
 
 - {pizzaData.map((pizza) => (
 -       <Pizza pizzaObj={pizza} key={pizza.name} />
 - ))}
+
+# Conditional Rendering with && using Short circuit method
