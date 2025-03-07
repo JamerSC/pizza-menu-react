@@ -76,8 +76,15 @@ function Header() {
 function Menu() {
   return (
     <main className="menu">
-      <h2>Our menu</h2>;
-      <Pizza
+      <h2>Our menu</h2>
+      {/* Rendering list using JS map method */}
+      <ul className="pizzas">
+        {pizzaData.map((pizza) => (
+          // <Pizza name={pizza.name} />
+          <Pizza pizzaObj={pizza} key={pizza.name} />
+        ))}
+      </ul>
+      {/* <Pizza
         name="Pizza Funghi"
         ingredients="Tomato, mozarella, mushrooms, and onion"
         photoName="/pizzas/funghi.jpg"
@@ -94,7 +101,7 @@ function Menu() {
         ingredients="Bread with italian olive oil and rosemary"
         photoName="/pizzas/focaccia.jpg"
         price={6.0}
-      />
+      /> */}
     </main>
   );
 }
@@ -105,17 +112,17 @@ function Menu() {
 function Pizza(props) {
   console.log(props);
   return (
-    <div className="pizza">
-      <img src={props.photoName} alt={props.name} />
+    <li className="pizza">
+      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
       <div>
-        <h3>{props.name}</h3>
-        <p>{props.ingredients}</p>
-        <span>${props.price}</span>
+        <h3>{props.pizzaObj.name}</h3>
+        <p>{props.pizzaObj.ingredients}</p>
+        <span>${props.pizzaObj.price}</span>
       </div>
       {/* <img src="/pizzas/funghi.jpg" />
       <h3>Pizza Funghi</h3>
       <p>Tomato, mozarella, mushrooms, and onion</p> */}
-    </div>
+    </li>
   );
 }
 

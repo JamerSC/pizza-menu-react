@@ -102,3 +102,13 @@ Settings > Diff Decorations > Set to None
 - Props is a data coming from the outside, and can only be updated by the parent component.
 - Props are read-only they are immutable. React strict rule
 - If you need to mutate props, you actually need state.
+
+# JSX
+
+- JSX is a syntax extension for JavaScript that lets you write HTML-like markup inside a JavaScript file.
+
+# Rendering List using MAP Method
+
+- {pizzaData.map((pizza) => (
+-       <Pizza pizzaObj={pizza} key={pizza.name} />
+- ))}
