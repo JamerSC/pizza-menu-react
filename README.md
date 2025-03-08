@@ -103,14 +103,19 @@ Settings > Diff Decorations > Set to None
 - Props are read-only they are immutable. React strict rule
 - If you need to mutate props, you actually need state.
 
-# JSX
+# 3/7/2025
 
 - JSX is a syntax extension for JavaScript that lets you write HTML-like markup inside a JavaScript file.
 
-# Rendering List using MAP Method ()
-
+- Rendering List using MAP Method () -
 - {pizzaData.map((pizza) => (
 -       <Pizza pizzaObj={pizza} key={pizza.name} />
 - ))}
 
-# Conditional Rendering with && using Short circuit method
+- Conditional Rendering with && using Short circuit method
+
+# 3/8/2025
+
+- Conditional Rendering with Ternaries
+- Conditional Rendering With Multiple Returns
+- Extracting JSX Into a New Component
