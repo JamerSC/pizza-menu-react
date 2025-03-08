@@ -119,3 +119,16 @@ Settings > Diff Decorations > Set to None
 - Conditional Rendering with Ternaries
 - Conditional Rendering With Multiple Returns
 - Extracting JSX Into a New Component
+
+- Destructuring Props - add curly braces in destructure
+- React Fragments - group the elements
+- <> </>
+- Setting Classes and Text Conditionally
+
+![alt text](image.png)
+
+- Edit website title in Public Folder > index.html > Title Element > Change the title
+
+- Summary Section Image - Public Folder > img > summary.png
+
+- Edit pizza react app's favicon

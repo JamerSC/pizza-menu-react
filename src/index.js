@@ -2,6 +2,110 @@ import React from "react"; // import module
 import ReactDOM from "react-dom/client";
 import "./index.css"; // importing css file
 // Array of Object
+
+function App() {
+  return (
+    <div className="container">
+      <Header />
+      <Menu />
+      <Footer />
+    </div>
+  );
+}
+
+function Header() {
+  const style = {};
+  return (
+    <header className="header">
+      <h1 style={style}>Fast React Pizza Co.</h1>
+    </header>
+  );
+}
+
+function Menu() {
+  const pizzas = pizzaData;
+  //const pizzas = [];
+  const numPizzas = pizzas.length;
+  return (
+    <main className="menu">
+      <h2>Our menu</h2>
+
+      {/* Rendering list using JS map method */}
+      {/* Conditional rendering list using Ternary */}
+      {numPizzas > 0 ? (
+        // using react fragments
+        <>
+          <p>
+            Authentic Italian Cuisine. 6 creative dishes to choose from. All
+            from our store oven, all organic, all delicious.
+          </p>
+          <ul className="pizzas">
+            {pizzas.map((pizza) => (
+              <Pizza pizzaObj={pizza} key={pizza.name} />
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p>We're still making our menu. Please come back later. 😊</p>
+      )}
+    </main>
+  );
+}
+
+// Destructuring the props
+function Pizza({ pizzaObj }) {
+  console.log(pizzaObj);
+
+  //if (pizzaObj.soldOut) return null;
+
+  return (
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
+      <img src={pizzaObj.photoName} alt={pizzaObj.name} />
+      <div>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+
+        {/* {pizzaObj.soldOut ? (
+          <span>SOLD OUT</span>
+        ) : (
+          <span>{pizzaObj.price}</span>
+        )} */}
+
+        <span>{pizzaObj.soldOut ? "SOLD OUT" : "$" + pizzaObj.price}</span>
+      </div>
+    </li>
+  );
+}
+
+function Footer() {
+  const hour = new Date().getHours();
+  const openHour = 12;
+  const closeHour = 22;
+
+  const isOpen = hour >= openHour && hour <= closeHour;
+  console.log(isOpen);
+  return (
+    <footer className="footer">
+      {isOpen ? (
+        <Order closeHour={closeHour} />
+      ) : (
+        <p>
+          Were are happy to welcome you between {openHour}:00 to {closeHour}:00.
+        </p>
+      )}
+    </footer>
+  );
+}
+
+function Order({ closeHour }) {
+  return (
+    <div className="order">
+      <p>We're open until {closeHour}:00, Come visit us or order online.</p>
+      <button className="btn">Order</button>
+    </div>
+  );
+}
+
 const pizzaData = [
   {
     name: "Focaccia",
@@ -47,148 +151,10 @@ const pizzaData = [
   },
 ];
 
-function App() {
-  //const x = johny;
-
-  return (
-    <div className="container">
-      <Header />
-      <Menu />
-      <Footer />
-    </div>
-  );
-}
-
-// components & inline styling of header
-function Header() {
-  //const style = { color: "red", fontSize: "48px", textTransform: "uppercase" };
-  const style = {}; // empty object
-  return (
-    <header className="header">
-      <h1 style={style}>Fast React Pizza Co.</h1>
-    </header>
-    //<h1 style={{ color: "red", fontSize: "48px", textTransform: "uppercase" }}>
-    //  Fast React Pizza Co.
-    //</h1>
-  );
-}
-
-function Menu() {
-  const pizzas = pizzaData;
-  //const pizzas = [];
-  const numPizzas = pizzas.length;
-  return (
-    <main className="menu">
-      <h2>Our menu</h2>
-      {/* Rendering list using JS map method */}
-      {/* {numPizzas > 0 && (
-        <ul className="pizzas">
-          {pizzas.map((pizza) => (
-            // <Pizza name={pizza.name} />
-            <Pizza pizzaObj={pizza} key={pizza.name} />
-          ))}
-        </ul>
-      )} */}
-      {/* Conditional rendering   using Ternary */}
-      {numPizzas > 0 ? (
-        <ul className="pizzas">
-          {pizzas.map((pizza) => (
-            // <Pizza name={pizza.name} />
-            <Pizza pizzaObj={pizza} key={pizza.name} />
-          ))}
-        </ul>
-      ) : (
-        <p>We're still making our menu. Please come back later. 😊</p>
-      )}
-      {/* <Pizza
-        name="Pizza Funghi"
-        ingredients="Tomato, mozarella, mushrooms, and onion"
-        photoName="/pizzas/funghi.jpg"
-        price="10.00"
-      />
-      <Pizza
-        name="Pizza Spinaci"
-        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
-        photoName="/pizzas/spinaci.jpg"
-        price={12.0}
-      />
-      <Pizza
-        name="Focaccia"
-        ingredients="Bread with italian olive oil and rosemary"
-        photoName="/pizzas/focaccia.jpg"
-        price={6.0}
-      /> */}
-    </main>
-  );
-}
-
-// component
-// writing component as fxn, nesting component call one another, reuse component
-// passing props
-function Pizza(props) {
-  console.log(props);
-
-  if (props.pizzaObj.soldOut) return null;
-
-  return (
-    <li className="pizza">
-      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
-      <div>
-        <h3>{props.pizzaObj.name}</h3>
-        <p>{props.pizzaObj.ingredients}</p>
-        <span>${props.pizzaObj.price}</span>
-      </div>
-      {/* <img src="/pizzas/funghi.jpg" />
-      <h3>Pizza Funghi</h3>
-      <p>Tomato, mozarella, mushrooms, and onion</p> */}
-    </li>
-  );
-}
-
-function Footer() {
-  const hour = new Date().getHours();
-  //const hour = 23;
-  //console.log(hour);
-  const openHour = 12;
-  const closeHour = 22;
-
-  // if (hour >= openHour && hour <= closeHour) alert("Sorry we're currenlty close!"); else alert();
-
-  const isOpen = hour >= openHour && hour <= closeHour;
-  console.log(isOpen);
-  return (
-    <footer className="footer">
-      {isOpen ? (
-        <Order closeHour={closeHour} />
-      ) : (
-        <p>
-          Were are happy to welcome you between {openHour}:00 to {closeHour}:00.
-        </p>
-      )}
-      {/* {new Date().toLocaleTimeString()}. We're currently open */}
-    </footer>
-  );
-  //return React.createElement("footer", null, "We are currently open");
-}
-
-function Order(props) {
-  return (
-    <div className="order">
-      <p>
-        We're open until {props.closeHour}:00, Come visit us or order online.
-      </p>
-      <button className="btn">Order</button>
-    </div>
-  );
-}
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// react v18
+
 root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
-
-// react v17
-//React.render(<App />);
