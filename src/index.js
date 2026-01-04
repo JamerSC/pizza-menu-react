@@ -1,6 +1,7 @@
 import React from "react"; // import module
 import ReactDOM from "react-dom/client";
 import "./index.css"; // importing css file
+import { pizzaData } from "./data";
 // Array of Object
 
 function App() {
@@ -33,7 +34,7 @@ function Menu() {
       {/* Rendering list using JS map method */}
       {/* Conditional rendering list using Ternary */}
       {numPizzas > 0 ? (
-        // using react fragments
+        // using react fragments <> </>
         <>
           <p>
             Authentic Italian Cuisine. 6 creative dishes to choose from. All
@@ -41,6 +42,7 @@ function Menu() {
           </p>
           <ul className="pizzas">
             {pizzas.map((pizza) => (
+              // list of pizza
               <Pizza pizzaObj={pizza} key={pizza.name} />
             ))}
           </ul>
@@ -59,6 +61,7 @@ function Pizza({ pizzaObj }) {
   //if (pizzaObj.soldOut) return null;
 
   return (
+    // using template literal in className to add js expression
     <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
       <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <div>
@@ -86,6 +89,7 @@ function Footer() {
   console.log(isOpen);
   return (
     <footer className="footer">
+      {/* conditional rendering (short circuiting) && */}
       {isOpen ? (
         <Order closeHour={closeHour} />
       ) : (
@@ -105,51 +109,6 @@ function Order({ closeHour }) {
     </div>
   );
 }
-
-const pizzaData = [
-  {
-    name: "Focaccia",
-    ingredients: "Bread with italian olive oil and rosemary",
-    price: 6,
-    photoName: "pizzas/focaccia.jpg",
-    soldOut: false,
-  },
-  {
-    name: "Pizza Margherita",
-    ingredients: "Tomato and mozarella",
-    price: 10,
-    photoName: "pizzas/margherita.jpg",
-    soldOut: false,
-  },
-  {
-    name: "Pizza Spinaci",
-    ingredients: "Tomato, mozarella, spinach, and ricotta cheese",
-    price: 12,
-    photoName: "pizzas/spinaci.jpg",
-    soldOut: false,
-  },
-  {
-    name: "Pizza Funghi",
-    ingredients: "Tomato, mozarella, mushrooms, and onion",
-    price: 12,
-    photoName: "pizzas/funghi.jpg",
-    soldOut: false,
-  },
-  {
-    name: "Pizza Salamino",
-    ingredients: "Tomato, mozarella, and pepperoni",
-    price: 15,
-    photoName: "pizzas/salamino.jpg",
-    soldOut: true,
-  },
-  {
-    name: "Pizza Prosciutto",
-    ingredients: "Tomato, mozarella, ham, aragula, and burrata cheese",
-    price: 18,
-    photoName: "pizzas/prosciutto.jpg",
-    soldOut: false,
-  },
-];
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

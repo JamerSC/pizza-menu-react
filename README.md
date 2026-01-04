@@ -132,3 +132,5 @@ Settings > Diff Decorations > Set to None
 - Summary Section Image - Public Folder > img > summary.png
 
 - Edit pizza react app's favicon
+
+-- npm start
